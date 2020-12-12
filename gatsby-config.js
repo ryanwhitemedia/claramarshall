@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Clara Marshall`,
+    description: `Design portfolio.`,
+    author: `@ryanwhitemedia`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -11,6 +11,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-source-wordpress-experimental`,
+      options: {
+        url: `http://localhost:8888/claramarshall.com/graphql`,
       },
     },
     `gatsby-transformer-sharp`,
