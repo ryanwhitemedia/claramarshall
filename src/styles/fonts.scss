@@ -1,0 +1,35 @@
+@import "vars.scss";
+
+$base-path: "../../public/fonts/" !default;
+
+@font-face {
+  font-family: "Hatton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("#{$base-path}/Hatton-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "DMSansRegular";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("#{$base-path}/dmsans-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "DMSansMedium";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("#{$base-path}/dmsans-medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "DMSansBold";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("#{$base-path}/dmsans-bold.woff") format("woff");
+}

@@ -1,0 +1,44 @@
+@import "layout.scss";
+
+// Variables
+//
+// Add global variables here, color palette, those variables shared by components all applied to global styling
+
+// ====================================================================
+// Breakpoints
+//
+// Window breakpoints
+// ====================================================================
+$layout-mobile: map-get($layout, mobile) + px;
+$layout-tablet: map-get($layout, tablet) + px;
+$layout-desktopSm: map-get($layout, desktopSm) + px;
+$layout-desktopMd: map-get($layout, desktopMd) + px;
+$layout-desktopLg: map-get($layout, desktopLg) + px;
+
+// ====================================================================
+// Base palette
+//
+// Grayscale and brand colors for use across the site.
+// ====================================================================
+$white: #ffffff;
+$black: #000000;
+$beige: #fbf4ef;
+$orange: #ff5001;
+
+// ====================================================================
+// General
+//
+// Global color variables, used usually in sections
+// Global variables used across the web app
+// ====================================================================
+$page-bg-color: $beige;
+$generic-fonts: DMSansRegular, Helvetica, Arial, sans-serif;
+
+$heading-font: Hatton;
+$font-medium: DMSansMedium;
+$font-bold: DMSansBold;
+
+// ====================================================================
+// List of z-index element
+// ====================================================================
+$elements: pages, main-nav, rotate;

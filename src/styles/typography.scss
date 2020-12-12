@@ -1,0 +1,59 @@
+//prettier-ignore
+$typography-system: (
+  mobile: (
+    h1: (44, 56),
+    h2: (44, 56),
+    h3: (18, 40),
+    h4: (14, normal, 1),
+    h5: (12),
+    h6: (12),
+    p: (18, 40),
+    link: (16, 21),
+  ),
+  tablet: (
+    h1: (64, 81),
+    h2: (64, 81),
+  ),
+  desktopSm: (
+  ),
+  desktopMd: (
+  ),
+  desktopLg: (
+  )
+);
+
+@mixin font-style($element) {
+  $mobile: map-get($typography-system, mobile);
+  $tablet: map-get($typography-system, tablet);
+  $desktopSm: map-get($typography-system, desktopSm);
+  $desktopMd: map-get($typography-system, desktopMd);
+  $desktopLg: map-get($typography-system, desktopLg);
+
+  @if (map-has-key($mobile, $element)) {
+    @include font-size(map-get($mobile, $element)...);
+  }
+
+  @if (map-has-key($tablet, $element)) {
+    @include breakpoint(tablet) {
+      @include font-size(map-get($tablet, $element)...);
+    }
+  }
+
+  @if (map-has-key($desktopSm, $element)) {
+    @include breakpoint(desktopSm) {
+      @include font-size(map-get($desktopSm, $element)...);
+    }
+  }
+
+  @if (map-has-key($desktopMd, $element)) {
+    @include breakpoint(desktopMd) {
+      @include font-size(map-get($desktopMd, $element)...);
+    }
+  }
+
+  @if (map-has-key($desktopLg, $element)) {
+    @include breakpoint(desktopLg) {
+      @include font-size(map-get($desktopLg, $element)...);
+    }
+  }
+}
