@@ -5,6 +5,7 @@
 @import "shared.scss";
 
 html {
+  background-color: $page-bg-color;
   box-sizing: border-box;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -68,6 +69,7 @@ h4,
 h5,
 h6,
 p,
+a,
 blockquote {
   margin: 0;
   padding: 0;

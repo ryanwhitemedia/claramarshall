@@ -20,6 +20,14 @@ module.exports = {
         url: `http://localhost:8888/claramarshall.com/graphql`,
       },
     },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /svgs/, // See below to configure properly
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

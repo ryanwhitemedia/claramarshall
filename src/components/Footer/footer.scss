@@ -1,5 +1,37 @@
-@import '../../styles/shared.scss';
+@import "../../styles/shared.scss";
 
 .Footer {
   background-color: $orange;
+  color: $beige;
+  padding: px(60) px(25);
+  text-align: center;
+
+  .logo {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: px(40);
+  }
+
+  .name {
+    font-family: $font-medium;
+  }
+
+  .email {
+    border-bottom: 2px solid $beige;
+    padding: px(3) 0;
+  }
+
+  .locationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: px(50);
+
+    .seperator {
+      height: 15px;
+      width: 2px;
+      background-color: $beige;
+      margin: 0 px(10);
+    }
+  }
 }
