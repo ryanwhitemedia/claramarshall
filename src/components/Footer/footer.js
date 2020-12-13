@@ -6,15 +6,19 @@ import "./footer.scss"
 
 const Footer = () => (
   <footer className="Footer">
-    <Logo className="logo" />
-    <p className="name">Clara Marshall</p>
-    <a className="email" href="mailto:clara@claramarshall.com">
-      clara@claramarshall.com
-    </a>
-    <div className="locationContainer">
-      <p>Toronto, ON</p>
-      <span className="seperator" />
-      <p>Canada</p>
+    <div className="innerContent">
+      <Logo className="logo" />
+      <div className="contactContainer">
+        <p className="name">Clara Marshall</p>
+        <a className="email" href="mailto:clara@claramarshall.com">
+          clara@claramarshall.com
+        </a>
+      </div>
+      <div className="locationContainer">
+        <p>Toronto, On</p>
+        <span className="seperator" />
+        <p>Canada</p>
+      </div>
     </div>
   </footer>
 )

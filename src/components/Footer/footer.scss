@@ -5,33 +5,83 @@
   color: $beige;
   padding: px(60) px(25);
   text-align: center;
+  margin: 0 auto;
 
-  .logo {
-    display: block;
+  .innerContent {
     margin: 0 auto;
-    margin-bottom: px(40);
-  }
+    max-width: px($main-max-width);
 
-  .name {
-    font-family: $font-medium;
-  }
+    @include breakpoint(tablet) {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row;
+    }
 
-  .email {
-    border-bottom: 2px solid $beige;
-    padding: px(3) 0;
-  }
+    .logo {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: px(40);
 
-  .locationContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: px(50);
+      @include breakpoint(tablet) {
+        margin: 0 px(100) 0 0;
+      }
 
-    .seperator {
-      height: 15px;
-      width: 2px;
-      background-color: $beige;
-      margin: 0 px(10);
+      @include breakpoint(desktopSm) {
+        margin-right: px(170);
+      }
+    }
+
+    .contactContainer {
+      @include breakpoint(tablet) {
+        text-align: left;
+        margin-right: px(100);
+      }
+
+      @include breakpoint(desktopSm) {
+        margin-right: px(200);
+      }
+      .name {
+        font-family: $font-medium;
+      }
+
+      .email {
+        border-bottom: 2px solid $beige;
+        padding: px(3) 0;
+      }
+    }
+
+    p,
+    .email {
+      @include font-style(p);
+      line-height: px(24);
+    }
+
+    .locationContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: px(50);
+
+      @include breakpoint(tablet) {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin: 0;
+        text-align: left;
+      }
+
+      .seperator {
+        height: 15px;
+        width: 2px;
+        background-color: $beige;
+        margin: 0 px(10);
+
+        @include breakpoint(tablet) {
+          display: none;
+          text-align: left;
+        }
+      }
     }
   }
 }
