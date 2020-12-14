@@ -3,11 +3,145 @@
 .Header {
   margin: 0 auto;
   max-width: px($main-max-width);
-  padding: px(20) px($main-padding);
+  padding: px(70) px($main-padding);
+  width: 100%;
 
-  .logo {
-    path {
-      fill: $black;
+  @include breakpoint(desktopSm) {
+    padding: px(60) px($main-padding);
+  }
+
+  &.fixHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .innerContent {
+    @include z-index(header);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+
+    @include breakpoint(desktopSm) {
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .logo {
+      width: px(40);
+      path {
+        fill: $black;
+      }
+    }
+
+    .hamburger {
+      background-color: transparent;
+      cursor: pointer;
+      margin-left: auto;
+      border: none;
+      position: absolute;
+      right: px($main-padding);
+      height: px(50);
+      width: px(50);
+      transform: translateY(px(-18));
+      pointer-events: all;
+
+      @include breakpoint(desktopSm) {
+        display: none;
+      }
+
+      .line {
+        height: px(2);
+        background-color: $black;
+        width: 100%;
+        position: absolute;
+        right: 0;
+
+        &:first-child {
+          top: px(20);
+        }
+
+        &:last-child {
+          bottom: px(20);
+        }
+      }
+    }
+  }
+
+  .menu {
+    @include z-index(main-nav);
+    background-color: $beige;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+    transform: translateY(100%);
+    transition: transform 0.6s;
+    @include ease(in-out-quad);
+    transition-delay: 0s;
+    border-top: 10px solid $orange;
+
+    &.showMenu {
+      transform: translateY(0);
+      transition-delay: 0s;
+
+      .list {
+        .listItem {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .listItem:nth-child(3) {
+          transition-delay: 300ms;
+        }
+
+        .listItem:nth-child(2) {
+          transition-delay: 400ms;
+        }
+
+        .listItem:nth-child(1) {
+          transition-delay: 500ms;
+        }
+      }
+    }
+
+    .list {
+      position: relative;
+      pointer-events: all;
+
+      .listItem {
+        display: block;
+        @include font-style(h1);
+        font-family: $heading-font;
+        margin: px(25) 0;
+        transform: translateY(px(20));
+        opacity: 0;
+        transition-delay: 0s;
+        transition: opacity 0.6s, transform 0.6s;
+      }
+
+      .circle {
+        background-color: $orange;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        border-radius: 50%;
+        height: px(74);
+        width: px(74);
+        z-index: -1;
+      }
     }
   }
 }

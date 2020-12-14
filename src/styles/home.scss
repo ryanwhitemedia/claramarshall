@@ -3,10 +3,10 @@
 .Home {
   max-width: px($main-max-width);
   margin: 0 auto px(100);
-  padding: 0 px($main-padding);
+  padding: px(20) px($main-padding) 0;
 
   .landingContainer {
-    padding-bottom: px(300);
+    padding-bottom: px(330);
     position: relative;
 
     @include breakpoint(desktopSm) {
@@ -22,7 +22,7 @@
     }
 
     .accentWrapper {
-      bottom: px(50);
+      bottom: px(75);
       margin-right: 10px;
       position: absolute;
       right: 0;
@@ -50,7 +50,7 @@
       bottom: 0;
       left: 0;
       position: absolute;
-      width: px(140);
+      width: px(189);
 
       @include breakpoint(desktopSm) {
         left: auto;
