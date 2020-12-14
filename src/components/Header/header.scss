@@ -10,14 +10,6 @@
     padding: px(60) px($main-padding);
   }
 
-  &.fixHeader {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    left: 0;
-    right: 0;
-  }
-
   .innerContent {
     @include z-index(header);
     display: flex;

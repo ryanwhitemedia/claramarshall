@@ -8,7 +8,7 @@ import Logo from "../../svgs/logo.svg"
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false)
   return (
-    <header className={classnames(showMenu && "fixHeader", "Header")}>
+    <header className="Header">
       <div className="innerContent">
         <Logo className="logo" />
         <button className="hamburger" onClick={() => setShowMenu(!showMenu)}>
