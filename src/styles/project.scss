@@ -1,0 +1,120 @@
+@import "shared.scss";
+
+.Project {
+  max-width: px($main-max-width);
+  padding: 0 px($main-padding);
+  margin: 0 auto;
+
+  .projectLanding {
+    margin-bottom: px(50);
+    @include breakpoint(tablet) {
+      margin-bottom: px(120);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .title {
+      color: $orange;
+      margin-bottom: px(30);
+    }
+
+    .year,
+    .type,
+    .link {
+      @include font-style(link);
+      text-transform: none;
+      font-family: $generic-fonts;
+      font-weight: 400;
+      margin-top: px(10);
+      display: block;
+    }
+
+    .link .text {
+      text-decoration: underline;
+    }
+
+    .arrow {
+      margin-left: px(15);
+      width: px(15);
+      vertical-align: middle;
+    }
+  }
+
+  p {
+    @include font-style(p2);
+  }
+
+  /* ==== CUSTOM GUTENBERG BLOCKS ==== */
+
+  // Fullscreen Image Block
+  .fullscreen-image {
+    width: 100vw;
+    margin: px(20) px(-$main-padding);
+    position: relative;
+
+    @include breakpoint(tablet) {
+      transform: translate(-50%);
+      right: -50%;
+      margin: 0;
+    }
+
+    .fullscreen-image-background {
+      width: 100% !important;
+      max-height: px(480) !important;
+    }
+
+    .fullscreen-image-text {
+      color: $white;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      text-align: center;
+      z-index: 1;
+
+      .fullscreen-image-title {
+        @include font-style(h1);
+      }
+
+      .fullscreen-image-subtitle {
+        @include font-style(p2);
+      }
+    }
+  }
+
+  // Image Feature (Image/Text)
+  .image-feature {
+    display: grid;
+    grid-template-columns: 100%;
+    max-width: 100%;
+    row-gap: px(20);
+    margin: px(50) 0;
+
+    @include breakpoint(tablet) {
+      grid-template-columns: 1fr 1fr;
+      column-gap: px(40);
+      margin: px(100) 0;
+    }
+
+    @include breakpoint(desktopSm) {
+      margin: px(120) 0;
+      grid-template-columns: 60% 40%;
+    }
+
+    .image-feature-image {
+      max-width: 100%;
+      width: auto !important;
+    }
+
+    .image-feature-text-container {
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+}

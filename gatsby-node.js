@@ -13,9 +13,17 @@ exports.createPages = ({ graphql, actions }) => {
       allWpProject(sort: { fields: [date] }) {
         nodes {
           title
-          excerpt
           content
           slug
+          project {
+            description
+            projectType
+            projectYear
+            link {
+              url
+              text
+            }
+          }
         }
       }
     }
