@@ -15,6 +15,22 @@
     }
 
     .title {
+      strong {
+        color: $orange;
+        position: relative;
+
+        &::after {
+          background-color: $orange;
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: px(3);
+          left: 0;
+          right: 0;
+          bottom: px(3);
+        }
+      }
+
       @include breakpoint(desktopSm) {
         max-width: px(720);
         margin-left: auto;

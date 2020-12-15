@@ -1,0 +1,49 @@
+@import "./shared.scss";
+
+.Contact {
+  padding: px(60) px($main-padding) px(120);
+  min-height: calc(100vh - #{px(410)});
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint(desktopSm) {
+    min-height: calc(100vh - #{px(390)});
+  }
+  .titleWrapper {
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+
+    .title {
+      color: $orange;
+      display: inline-block;
+      text-align: center;
+      border-bottom: 3px solid $orange;
+      line-height: px(40);
+      margin-bottom: px(40);
+
+      @include breakpoint(tablet) {
+        line-height: px(60);
+      }
+    }
+  }
+  .list {
+    text-align: center;
+    width: px(130);
+    margin: 0 auto;
+
+    .listItem {
+      .link {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include font-style(link);
+        margin: px(20) 0;
+      }
+    }
+  }
+}

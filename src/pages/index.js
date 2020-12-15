@@ -1,8 +1,7 @@
 import React from "react"
-// import { Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-// import Image from "../components/image"
 import SEO from "../components/seo"
 
 import CircleArrow from "../svgs/circle-arrow.svg"
@@ -10,51 +9,65 @@ import Squiggle from "../svgs/squiggle.svg"
 
 import "../styles/home.scss"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <div className="Home">
-      <div className="landingContainer">
-        <h1 className="title">
-          Something about being a designer who likes to design things.
-        </h1>
-        <span className="accentWrapper">
-          <p className="accent">Clara Marshall - Designer</p>
-        </span>
-        <CircleArrow className="arrow" />
-      </div>
+export default ({ data }) => {
+  const content = data.allWpPage.edges[0].node.home
+  const heroText = content.heroText.replace("<p>", "").replace("</p>", "")
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <div className="Home">
+        <div className="landingContainer">
+          <h1
+            className="title"
+            dangerouslySetInnerHTML={{ __html: heroText }}
+          />
+          <span className="accentWrapper">
+            <p
+              className="accent"
+              dangerouslySetInnerHTML={{ __html: content.tagline }}
+            />
+          </span>
+          <CircleArrow className="arrow" />
+        </div>
 
-      <div className="threeGrid">
-        <div className="itemOne">
-          <h4 className="subtitle">Thoughts</h4>
-        </div>
-        <div className="itemTwo">
-          <p className="paragraph">
-            It all begins with an idea. Maybe you want to launch a business.
-            Maybe you want to turn a hobby into something more. Or maybe you
-            have a creative project to share with the world. Whatever it is, the
-            way you tell your story online can make all the difference.
-          </p>
-        </div>
-        <div className="itemThree">
-          <Squiggle className="squiggle" />
-        </div>
+        {content.items.map(item => (
+          <div className="threeGrid">
+            <div className="itemOne">
+              <h4
+                className="subtitle"
+                dangerouslySetInnerHTML={{ __html: item.title }}
+              />
+            </div>
+            <div
+              className="itemTwo"
+              dangerouslySetInnerHTML={{ __html: item.content }}
+            />
+            <div className="itemThree">
+              <Squiggle className="squiggle" />
+            </div>
+          </div>
+        ))}
       </div>
+    </Layout>
+  )
+}
 
-      <div className="threeGrid">
-        <div className="itemOne">
-          <h4 className="subtitle">Awards</h4>
-        </div>
-        <div className="itemTwo">
-          <p className="bold">Applied Arts</p>
-          <p className="paragraph">2018 - Website Design</p>
-        </div>
-        <div className="itemThree">
-          <Squiggle className="squiggle" />
-        </div>
-      </div>
-    </div>
-  </Layout>
-)
-
-export default IndexPage
+export const query = graphql`
+  query {
+    allWpPage(filter: { slug: { eq: "home" } }) {
+      edges {
+        node {
+          home {
+            heroText
+            tagline
+            items {
+              content
+              fieldGroupName
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+`

@@ -10,7 +10,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return graphql(`
     {
-      allWpPost(sort: { fields: [date] }) {
+      allWpProject(sort: { fields: [date] }) {
         nodes {
           title
           excerpt
@@ -20,16 +20,12 @@ exports.createPages = ({ graphql, actions }) => {
       }
     }
   `).then(result => {
-    //highlight-start
-    result.data.allWpPost.nodes.forEach(node => {
+    result.data.allWpProject.nodes.forEach(node => {
       createPage({
-        path: node.slug,
-        component: path.resolve(`./src/templates/post.js`),
-        context: {
-          slug: node.slug,
-        },
+        path: `/project/${node.slug}`,
+        component: path.resolve(`./src/templates/project.js`),
+        context: node,
       })
     })
-    //highlight-end
   })
 }
