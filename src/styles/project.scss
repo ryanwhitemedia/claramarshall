@@ -117,4 +117,30 @@
       align-items: flex-end;
     }
   }
+
+  // Image Columns Block
+  .image-columns {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    @include breakpoint(tablet) {
+      flex-direction: row;
+    }
+
+    .image-columns-column {
+      display: flex;
+      flex-basis: 100%;
+      margin-right: 20px;
+      flex-direction: column;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      .image-columns-image {
+        width: 100% !important;
+        margin-bottom: 20px;
+      }
+    }
+  }
 }
