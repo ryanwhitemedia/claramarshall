@@ -1,0 +1,73 @@
+@import "../../styles/shared.scss";
+
+.FeaturedProjects {
+  background-color: $orange;
+  padding: px(70) 0;
+
+  @include breakpoint(tablet) {
+    padding: px(110) 0;
+  }
+
+  .project {
+    text-align: center;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .projectInner {
+      background-color: $black;
+      margin: 0 px(12);
+      padding: px(20) px(15);
+      height: px(165);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+
+      @include breakpoint(tablet) {
+        height: px(225);
+        margin: 0 px(7);
+      }
+
+      .text {
+        z-index: 1;
+        .title {
+          @include font-style(carousel);
+          margin: px(20) 0;
+          text-transform: uppercase;
+        }
+
+        .arrow {
+          transform: rotate(45deg);
+          width: px(30);
+        }
+      }
+
+      .image {
+        position: absolute;
+        min-width: 100%;
+        min-height: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        .gatsby-image-wrapper {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .slick-slider {
+    margin: 0 auto;
+    width: 80%;
+
+    .slick-list {
+      overflow: visible;
+    }
+  }
+}
