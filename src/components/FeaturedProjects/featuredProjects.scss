@@ -15,6 +15,19 @@
     align-items: center;
     justify-content: center;
 
+    &:hover {
+      .projectInner {
+        .image {
+          transform-origin: center;
+          transform: scale(1.2);
+        }
+
+        .overlay {
+          opacity: 0.75;
+        }
+      }
+    }
+
     .projectInner {
       background-color: $black;
       margin: 0 px(12);
@@ -25,6 +38,7 @@
       justify-content: center;
       flex-direction: column;
       position: relative;
+      overflow: hidden;
 
       @include breakpoint(tablet) {
         height: px(225);
@@ -33,16 +47,31 @@
 
       .text {
         z-index: 1;
-        .title {
-          @include font-style(carousel);
-          margin: px(20) 0;
-          text-transform: uppercase;
-        }
+      }
 
-        .arrow {
-          transform: rotate(45deg);
-          width: px(30);
-        }
+      .title {
+        @include font-style(carousel);
+        margin: px(20) 0;
+        text-transform: uppercase;
+      }
+
+      .arrow {
+        transform: rotate(45deg);
+        width: px(30);
+        transition: transform 0.3s;
+        @include ease(in-out-quad);
+      }
+
+      .overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        transition: opacity 0.3s;
+        @include ease(in-out-quad);
       }
 
       .image {
@@ -53,6 +82,8 @@
         bottom: 0;
         left: 0;
         right: 0;
+        transition: transform 0.3s;
+        @include ease(in-out-quad);
 
         .gatsby-image-wrapper {
           height: 100%;

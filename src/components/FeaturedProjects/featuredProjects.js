@@ -16,6 +16,7 @@ export default function FeaturedProjects({ projects }) {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    swipeToSlide: true,
   }
   return (
     <div className="FeaturedProjects">
@@ -25,14 +26,17 @@ export default function FeaturedProjects({ projects }) {
             <div className="projectInner">
               <div />
               {project.node.featuredImage != null && (
-                <span className="image">
-                  <Img
-                    fluid={
-                      project.node.featuredImage.node.localFile.childImageSharp
-                        .fluid
-                    }
-                  />
-                </span>
+                <>
+                  <span className="overlay" />
+                  <span className="image">
+                    <Img
+                      fluid={
+                        project.node.featuredImage.node.localFile
+                          .childImageSharp.fluid
+                      }
+                    />
+                  </span>
+                </>
               )}
               <div className="text">
                 <h2 className="title">{project.node.title}</h2>
