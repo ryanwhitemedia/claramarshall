@@ -8,8 +8,22 @@
     min-height: calc(100vh - #{px(390)});
   }
 
+  .circle {
+    background-color: $orange;
+    border-radius: 50%;
+    height: calc(100vh - #{px(300)});
+    position: fixed;
+    width: px(100);
+    margin: auto;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+
   .projectGroup {
-    margin-bottom: px(40);
+    margin-bottom: px(20);
 
     .groupTitle {
       text-align: center;
@@ -21,15 +35,17 @@
 
     .list {
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
 
       .listItem {
         @include font-style(h1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
         font-family: $heading-font;
         border-bottom: 3px solid;
         display: inline-block;
+        margin-bottom: px(30);
       }
     }
   }

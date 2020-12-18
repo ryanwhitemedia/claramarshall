@@ -31,7 +31,7 @@ export default ({ data }) => {
         </div>
 
         {content.items.map(item => (
-          <div className="threeGrid">
+          <div className="threeGrid" key={item.title}>
             <div className="itemOne">
               <h4
                 className="subtitle"

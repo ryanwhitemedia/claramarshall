@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import { graphql } from "gatsby"
 
 import Link from "gatsby-link"
@@ -8,6 +8,7 @@ import SEO from "../components/seo"
 import "../styles/projects.scss"
 
 export default ({ data }) => {
+  const circleRef = useRef(null)
   const groups = data.allWpProject.group
   groups.sort(function (a, b) {
     return b.fieldValue - a.fieldValue
@@ -16,6 +17,7 @@ export default ({ data }) => {
     <Layout>
       <SEO title="Projects" />
       <div className="Projects">
+        <span className="circle" ref={circleRef} />
         {groups.map(group => {
           return (
             <div key={group.fieldValue} className="projectGroup">

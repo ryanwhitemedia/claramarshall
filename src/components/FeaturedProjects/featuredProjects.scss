@@ -3,6 +3,7 @@
 .FeaturedProjects {
   background-color: $orange;
   padding: px(70) 0;
+  overflow: hidden;
 
   @include breakpoint(tablet) {
     padding: px(110) 0;
