@@ -88,6 +88,7 @@ h1,
 h2 {
   @include font-style(h1);
   font-family: $heading-font;
+  font-weight: 400;
 }
 
 h3 {

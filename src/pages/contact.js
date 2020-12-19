@@ -8,10 +8,10 @@ import Arrow from "../svgs/arrow.svg"
 
 import "../styles/contact.scss"
 
-export default ({ data }) => {
+export default ({ data, path }) => {
   const content = data.allWpPage.edges[0].node.contact
   return (
-    <Layout>
+    <Layout path={path}>
       <SEO title="Contact" />
       <div className="Contact">
         <div>
@@ -31,7 +31,7 @@ export default ({ data }) => {
                   rel="noreferrer"
                 >
                   {link.text}
-                  <Arrow />
+                  <Arrow className="arrow" />
                 </a>
               </li>
             ))}

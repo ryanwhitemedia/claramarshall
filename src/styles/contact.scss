@@ -36,6 +36,21 @@
     margin: 0 auto;
 
     .listItem {
+      position: relative;
+      @include breakpoint(desktopSm) {
+        &:hover {
+          .arrow {
+            transform: scale(1.15);
+          }
+        }
+
+        .arrow {
+          transform: scale(1);
+          transform-origin: left bottom;
+          transition: transform 0.3s;
+        }
+      }
+
       .link {
         width: 100%;
         display: flex;

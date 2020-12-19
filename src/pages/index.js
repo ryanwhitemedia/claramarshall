@@ -9,11 +9,11 @@ import Squiggle from "../svgs/squiggle.svg"
 
 import "../styles/home.scss"
 
-export default ({ data }) => {
+export default ({ data, path }) => {
   const content = data.allWpPage.edges[0].node.home
   const heroText = content.heroText.replace("<p>", "").replace("</p>", "")
   return (
-    <Layout>
+    <Layout path={path}>
       <SEO title="Home" />
       <div className="Home">
         <div className="landingContainer">

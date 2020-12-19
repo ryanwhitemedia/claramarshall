@@ -10,7 +10,7 @@ import Arrow from "../svgs/arrow.svg"
 
 import "../styles/projects.scss"
 
-export default ({ data }) => {
+export default ({ data, path }) => {
   const circleRef = useRef(null)
   const [itemHovered, setItemHovered] = useState(false)
   const [activeProject, setActiveProject] = useState(null)
@@ -20,6 +20,7 @@ export default ({ data }) => {
   groups.sort(function (a, b) {
     return b.fieldValue - a.fieldValue
   })
+
 
   const validatePosition = position => {
     if (position <= 0) {
@@ -50,7 +51,7 @@ export default ({ data }) => {
   }
 
   return (
-    <Layout>
+    <Layout hideFooter={true} path={path}>
       <SEO title="Projects" />
       <div className="Projects">
         <div
@@ -65,6 +66,8 @@ export default ({ data }) => {
           onMouseLeave={() => {
             hoverOffProject()
           }}
+          role="button"
+          tabIndex={itemHovered ? "0" : "-1"}
         >
           {activeProject !== null && itemHovered && (
             <Link to={`/project/${activeProject.node.slug}`} className="link">

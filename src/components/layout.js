@@ -14,7 +14,7 @@ import "../styles/global.scss"
 import Header from "./Header/header"
 import Footer from "./Footer/footer"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, hideFooter, path }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -27,10 +27,13 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Header
+        siteTitle={data.site.siteMetadata?.title || `Title`}
+        path={path}
+      />
       <div>
         <main>{children}</main>
-        <Footer />
+        {!hideFooter && <Footer />}
       </div>
     </>
   )
@@ -38,6 +41,8 @@ const Layout = ({ children }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  hideFooter: PropTypes.bool,
+  path: PropTypes.string,
 }
 
 export default Layout
