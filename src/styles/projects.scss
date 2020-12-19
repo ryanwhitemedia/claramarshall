@@ -1,52 +1,148 @@
 @import "shared.scss";
 
 .Projects {
-  padding: px(50) px($main-padding);
-  min-height: calc(100vh - #{px(410)});
+  .projectsInner {
+    padding: px(50) px($main-padding);
+    min-height: calc(100vh - #{px(410)});
 
-  @include breakpoint(desktopSm) {
-    min-height: calc(100vh - #{px(390)});
+    @include breakpoint(desktopSm) {
+      min-height: calc(100vh - #{px(390)});
+    }
+
+    .projectGroup {
+      margin-bottom: px(20);
+
+      .groupTitle {
+        text-align: center;
+        margin-bottom: px(10);
+        @include font-style(link);
+        font-weight: 500;
+        font-family: $font-medium;
+      }
+
+      .list {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .listItem {
+          @include font-style(h1);
+          font-family: $heading-font;
+          border-bottom: 3px solid;
+          display: inline-block;
+          margin-bottom: px(30);
+        }
+      }
+
+      .listInactive {
+        pointer-events: none;
+      }
+    }
   }
 
   .circle {
     background-color: $orange;
     border-radius: 50%;
+    box-sizing: border-box;
     height: calc(100vh - #{px(300)});
     position: fixed;
     width: px(100);
     margin: auto;
     left: 0;
-    bottom: 0;
     top: 0;
+    bottom: 0;
     right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: -1;
-  }
 
-  .projectGroup {
-    margin-bottom: px(20);
-
-    .groupTitle {
-      text-align: center;
-      margin-bottom: px(10);
-      @include font-style(link);
-      font-weight: 500;
-      font-family: $font-medium;
+    @include breakpoint(desktopSm) {
+      $height: calc(50vh - #{px(300)});
+      margin: 0 auto;
+      top: calc(#{$height});
+      @include ease(in-out-quad);
+      transition: height 0.2s, width 0.2s, z-index 0.2s, top 0.2s;
+      width: px(296);
+      height: calc(100vh - #{px(200)});
     }
 
-    .list {
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+    .link {
+      padding: px(10) px(30);
+      color: $white;
 
-      .listItem {
-        @include font-style(h1);
-        font-family: $heading-font;
-        border-bottom: 3px solid;
-        display: inline-block;
-        margin-bottom: px(30);
+      .title {
+        @include font-style(h2);
+        text-align: center;
+      }
+
+      .arrowContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 0;
+        bottom: px(25);
+        right: 0;
+
+        p {
+          font-family: $font-bold;
+        }
+
+        .arrow {
+          transform: rotate(45deg);
+          margin-left: px(20);
+          path {
+            stroke: $white;
+          }
+        }
       }
     }
+  }
+
+  .circleActive {
+    @include breakpoint(desktopSm) {
+      height: px(328);
+      width: px(328);
+      z-index: 1;
+      margin: 0 auto;
+    }
+  }
+
+  .overlay {
+    @include breakpoint(desktopSm) {
+      opacity: 0;
+      background-color: $black;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+      transition: opacity 0.5s;
+      @include ease(in-out-quad);
+    }
+
+    .bgImage {
+      display: none;
+    }
+
+    @include breakpoint(desktopSm) {
+      .bgImage {
+        display: block;
+        min-height: 100%;
+        min-width: 100%;
+      }
+    }
+  }
+
+  .overlayActive {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+    z-index: 0;
   }
 }
