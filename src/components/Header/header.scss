@@ -190,8 +190,18 @@
           top: auto;
           left: unset;
           right: unset;
-          transition: left 0.3s, right 0.3s;
           @include ease(in-out-quad);
+          transition: left 0.3s, opacity 0.3s;
+
+          &.hideCircle {
+            opacity: 0;
+            transition: 0s;
+          }
+
+          &.showCircle {
+            opacity: 1;
+            transition: opacity 0.3s;
+          }
 
           &.circleDesktop {
             display: block;

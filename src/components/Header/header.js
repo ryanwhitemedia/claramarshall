@@ -10,20 +10,27 @@ import Logo from "../../svgs/logo.svg"
 const Header = ({ path }) => {
   const [showMenu, setShowMenu] = useState(false)
   const [style, setStyle] = useState()
+  const [hideCircle, setHideCircle] = useState(false)
 
   const getDotStyle = page => {
     if (page === "/") {
       setStyle({ left: "16px" })
+      setHideCircle(false)
     } else if (page === "/projects/") {
       setStyle({ left: "125px" })
+      setHideCircle(false)
     } else if (page === "/contact/") {
       setStyle({ left: "242px" })
+      setHideCircle(false)
+    } else {
+      setStyle({ opacity: 0 })
+      setHideCircle(true)
     }
   }
 
   useEffect(() => {
     getDotStyle(path)
-  }, [])
+  }, [path])
 
   return (
     <header className="Header">
@@ -66,7 +73,9 @@ const Header = ({ path }) => {
             <span role="presentation" className="circle" />
             <span
               role="presentation"
-              className="circle circleDesktop"
+              className={classnames("circle circleDesktop", {
+                hideCircle: hideCircle,
+              })}
               style={style}
             />
           </ul>

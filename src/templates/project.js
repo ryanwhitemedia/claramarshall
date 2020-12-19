@@ -6,11 +6,11 @@ import FeaturedProjects from "../components/FeaturedProjects/featuredProjects"
 
 import "../styles/project.scss"
 
-export default function Post({ pageContext, data }) {
+export default function Post({ pageContext, data, path }) {
   const content = pageContext
 
   return (
-    <Layout>
+    <Layout path={path}>
       <div className="Project">
         <div className="projectLanding">
           <div>
