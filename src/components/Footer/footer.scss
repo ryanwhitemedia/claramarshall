@@ -3,15 +3,17 @@
 .Footer {
   background-color: $orange;
   color: $beige;
-  padding: px(60) px(25);
   text-align: center;
   margin: 0 auto;
 
   .innerContent {
     margin: 0 auto;
     max-width: px($main-max-width);
+    padding: px(60) px($main-padding);
 
     @include breakpoint(tablet) {
+      padding-left: px($tablet-padding);
+      padding-right: px($tablet-padding);
       display: flex;
       justify-content: flex-start;
       flex-direction: row;
@@ -28,6 +30,9 @@
 
       @include breakpoint(desktopSm) {
         margin-right: px(170);
+        width: px(30);
+        height: px(56);
+        vertical-align: top;
       }
     }
 
@@ -54,6 +59,7 @@
     .email {
       @include font-style(p);
       line-height: px(24);
+      font-family: $font-medium;
     }
 
     .locationContainer {

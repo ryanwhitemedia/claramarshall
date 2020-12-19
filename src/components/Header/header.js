@@ -34,41 +34,53 @@ const Header = ({ path }) => {
 
   return (
     <header className="Header">
-      <div className="innerContent">
+      <div
+        className={classnames("innerContent", showMenu && "innerContentHidden")}
+      >
         <Link to="/">
           <Logo className="logo" />
         </Link>
-        <button className="hamburger" onClick={() => setShowMenu(!showMenu)}>
+        <button className="hamburger" onClick={() => setShowMenu(true)}>
           <span className="line" />
           <span className="line" />
         </button>
       </div>
       <div className={classnames("menu", showMenu && "showMenu")}>
+        <button className="closeButton" onClick={() => setShowMenu(false)}>
+          <span className="line" />
+          <span className="line" />
+        </button>
         <nav>
           <ul className="list">
             <Link
               className="listItem"
               to="/"
+              activeClassName="activeListItem"
               onMouseOver={() => getDotStyle("/")}
               onMouseLeave={() => getDotStyle(path)}
             >
               Home
+              <span className="activeDot" />
             </Link>
             <Link
               className="listItem"
               to="/projects"
+              activeClassName="activeListItem"
               onMouseOver={() => getDotStyle("/projects/")}
               onMouseLeave={() => getDotStyle(path)}
             >
               Projects
+              <span className="activeDot" />
             </Link>
             <Link
               className="listItem"
               to="/contact"
+              activeClassName="activeListItem"
               onMouseOver={() => getDotStyle("/contact/")}
               onMouseLeave={() => getDotStyle(path)}
             >
               Contact
+              <span className="activeDot" />
             </Link>
             <span role="presentation" className="circle" />
             <span

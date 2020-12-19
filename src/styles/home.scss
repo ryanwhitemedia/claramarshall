@@ -5,13 +5,22 @@
   margin: 0 auto px(100);
   padding: px(20) px($main-padding) 0;
 
+  @include breakpoint(tablet) {
+    padding-left: px($tablet-padding);
+    padding-right: px($tablet-padding);
+  }
+
+  @include breakpoint(desktopSm) {
+    padding-bottom: px(10);
+  }
+
   .landingContainer {
     padding-bottom: px(330);
     position: relative;
 
     @include breakpoint(desktopSm) {
-      margin-bottom: px(200);
-      padding-bottom: px(100);
+      margin-bottom: px(100);
+      padding-bottom: px(150);
     }
 
     .title {

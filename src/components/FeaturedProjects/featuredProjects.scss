@@ -46,6 +46,14 @@
         margin: 0 px(7);
       }
 
+      @include breakpoint(desktopSm) {
+        height: 250px;
+      }
+
+      @include breakpoint(desktopMd) {
+        height: 290px;
+      }
+
       .text {
         z-index: 1;
       }
@@ -97,6 +105,18 @@
   .slick-slider {
     margin: 0 auto;
     width: 80%;
+
+    @include breakpoint(tablet) {
+      width: 60%;
+    }
+
+    @include breakpoint(desktopSm) {
+      width: 100%;
+    }
+
+    @include breakpoint(desktopMd) {
+      width: 80%;
+    }
 
     .slick-list {
       overflow: visible;

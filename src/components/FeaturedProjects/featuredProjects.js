@@ -22,7 +22,7 @@ export default function FeaturedProjects({ projects }) {
     infinite: true,
     arrows: false,
     speed: 500,
-    slidesToShow: screenLayout.mobile ? 1 : 3,
+    slidesToShow: screenLayout.mobile || screenLayout.tablet ? 1 : 3,
     slidesToScroll: 1,
     swipeToSlide: true,
   }

@@ -2,14 +2,15 @@
 
 .Contact {
   padding: px(60) px($main-padding) px(120);
-  min-height: calc(100vh - #{px(410)});
+  min-height: calc(100vh - #{px(600)});
   display: flex;
   align-items: center;
   justify-content: center;
 
   @include breakpoint(desktopSm) {
-    min-height: calc(100vh - #{px(390)});
+    min-height: calc(100vh - #{px(360)});
   }
+
   .titleWrapper {
     margin: 0 auto;
     text-align: center;
