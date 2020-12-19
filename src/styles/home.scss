@@ -24,6 +24,7 @@
     }
 
     .title {
+      @include animate-in-up(0.6);
       strong {
         color: $orange;
         position: relative;
@@ -49,6 +50,7 @@
     }
 
     .accentWrapper {
+      @include animate-in(0.6, 0.3);
       bottom: px(75);
       margin-right: 10px;
       position: absolute;
@@ -74,6 +76,7 @@
     }
 
     .arrow {
+      @include animate-in(0.6, 0.3);
       bottom: 0;
       left: 0;
       position: absolute;
@@ -138,6 +141,14 @@
         order: 1;
         margin-top: px(10);
         padding-right: px(20);
+      }
+    }
+  }
+
+  .threeGrid {
+    @for $i from 1 through 10 {
+      &:nth-child(3n + #{$i}) {
+        @include animate-in-up(0.6, $i * 0.3);
       }
     }
   }

@@ -19,6 +19,7 @@
     text-align: center;
 
     .title {
+      @include animate-in-up(0.6);
       color: $orange;
       display: inline-block;
       text-align: center;
@@ -38,6 +39,8 @@
 
     .listItem {
       position: relative;
+      @include animate-in-up(0.6, 0.3);
+
       @include breakpoint(desktopSm) {
         &:hover {
           .arrow {

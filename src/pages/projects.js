@@ -116,23 +116,21 @@ export default ({ data, path }) => {
               </div>
             )
           })}
-          <div
-            className={classnames("overlay", itemHovered && "overlayActive")}
-          >
-            {activeProject !== null && (
-              <>
-                {activeProject.node.featuredImage !== null && (
-                  <Img
-                    className="bgImage"
-                    fluid={
-                      activeProject.node.featuredImage.node.localFile
-                        .childImageSharp.fluid
-                    }
-                  />
-                )}
-              </>
-            )}
-          </div>
+        </div>
+        <div className={classnames("overlay", itemHovered && "overlayActive")}>
+          {activeProject !== null && (
+            <>
+              {activeProject.node.featuredImage !== null && (
+                <Img
+                  className="bgImage"
+                  fluid={
+                    activeProject.node.featuredImage.node.localFile
+                      .childImageSharp.fluid
+                  }
+                />
+              )}
+            </>
+          )}
         </div>
       </div>
     </Layout>

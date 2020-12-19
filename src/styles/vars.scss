@@ -30,7 +30,7 @@ $orange: #ff5001;
 //
 // Global color variables, used usually in sections
 // Global variables used across the web app
-// ====================================================================
+
 $page-bg-color: $beige;
 $generic-fonts: DMSansRegular, Helvetica, Arial, sans-serif;
 
@@ -41,6 +41,10 @@ $font-bold: DMSansBold;
 $main-padding: 25;
 $tablet-padding: 80;
 $main-max-width: 1224;
+
+// ====================================================================
+// Animation
+$default-animtion-duration: 3;
 
 // ====================================================================
 // List of z-index element

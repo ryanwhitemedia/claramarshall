@@ -3,7 +3,7 @@
 // More information about mixins in:
 // http://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixins
 // Add comment to every function
-@import 'vars.scss';
+@import "vars.scss";
 
 /// Set Regular Font as font family. This mixin's name is generic to abstract the font family name in case it changes
 /// @group Fonts
@@ -12,7 +12,7 @@
 ///     @include font-slate-regular();
 ///   }
 @mixin font-slate-regular() {
-  font-family: 'SlateStdRegular', #{$generic-fonts};
+  font-family: "SlateStdRegular", #{$generic-fonts};
 }
 
 // Use two pixel values to convert line-height into a unitless number
@@ -142,4 +142,47 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   color: currentColor;
+}
+
+@mixin animate-in-up($duration, $delay: 0) {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fade-in-up;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  transition: opacity 0.3s, transform 0.3s;
+  animation-duration: #{$duration}s;
+  animation-delay: #{$delay}s;
+  @include animationEase(in-out-quad);
+}
+
+@mixin animate-in($duration, $delay: 0) {
+  opacity: 0;
+  animation: fade-in;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  transition: opacity 0.3s;
+  animation-duration: #{$duration}s;
+  animation-delay: #{$delay}s;
+  @include animationEase(in-out-quad);
+}
+
+@keyframes fade-in-up {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

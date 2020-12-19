@@ -5,6 +5,7 @@
   .projectsInner {
     padding: px(20) px($main-padding);
     min-height: calc(100vh - #{px(410)});
+    @include animate-in-up(0.6);
 
     @include breakpoint(desktopSm) {
       min-height: calc(100vh - #{px(390)});
@@ -59,6 +60,7 @@
   $largeHeight: px(750);
 
   .circle {
+    @include animate-in(0.6);
     background-color: $orange;
     border-radius: 50%;
     box-sizing: border-box;
