@@ -4,7 +4,9 @@ import classnames from "classnames"
 import Link from "gatsby-link"
 import Img from "gatsby-image"
 
+import useLayout from "../utils/hooks/use-layout"
 import Layout from "../components/layout"
+
 import SEO from "../components/seo"
 import Arrow from "../svgs/arrow.svg"
 
@@ -16,6 +18,7 @@ export default ({ data, path }) => {
   const [activeProject, setActiveProject] = useState(null)
   const [circlePosition, setCirclePosition] = useState(null)
   const [listActive, setListActive] = useState(true)
+  const { screenLayout } = useLayout()
   const groups = data.allWpProject.group
   groups.sort(function (a, b) {
     return b.fieldValue - a.fieldValue
@@ -35,24 +38,28 @@ export default ({ data, path }) => {
   }
 
   const hoverProject = (e, project) => {
-    const position = validatePosition(
-      e.currentTarget.getBoundingClientRect().top,
-      e.currentTarget.getBoundingClientRect().bottom
-    )
-    setCirclePosition(position)
-    setActiveProject(project)
-    setItemHovered(true)
-    setListActive(false)
+    if (!screenLayout.mobile && !screenLayout.tablet) {
+      const position = validatePosition(
+        e.currentTarget.getBoundingClientRect().top,
+        e.currentTarget.getBoundingClientRect().bottom
+      )
+      setCirclePosition(position)
+      setActiveProject(project)
+      setItemHovered(true)
+      setListActive(false)
+    }
   }
 
   const hoverOffProject = () => {
-    setCirclePosition(null)
-    setItemHovered(false)
+    if (!screenLayout.mobile && !screenLayout.tablet) {
+      setCirclePosition(null)
+      setItemHovered(false)
 
-    setTimeout(() => {
-      setListActive(true)
-      setActiveProject(null)
-    }, 750)
+      setTimeout(() => {
+        setListActive(true)
+        setActiveProject(null)
+      }, 750)
+    }
   }
 
   return (

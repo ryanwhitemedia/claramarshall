@@ -1,0 +1,10 @@
+/* stylelint-disable */
+@import "shared.scss";
+
+:export {
+  layoutMobile: $layout-mobile;
+  layoutTablet: $layout-tablet;
+  layoutDesktopSm: $layout-desktopSm;
+  layoutDesktopMd: $layout-desktopMd;
+  layoutDesktopLg: $layout-desktopLg;
+}

@@ -69,11 +69,22 @@
       left: 0;
       position: absolute;
       width: px(189);
-
+      overflow: visible;
       @include breakpoint(desktopSm) {
         left: auto;
         right: px(640);
         width: px(75);
+
+        path {
+          transition: transform 0.3s;
+          @include ease(in-out-cubic);
+        }
+
+        &:hover {
+          path {
+            transform: translateY(px(40));
+          }
+        }
       }
     }
   }

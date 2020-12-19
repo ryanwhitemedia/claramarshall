@@ -10,6 +10,7 @@ import "../styles/project.scss"
 export default function Post({ pageContext, data, path }) {
   const content = pageContext
 
+
   return (
     <Layout path={path}>
       <div className="Project">

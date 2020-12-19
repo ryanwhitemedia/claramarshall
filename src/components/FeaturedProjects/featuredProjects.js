@@ -3,6 +3,7 @@ import Slider from "react-slick"
 import Img from "gatsby-image"
 import Link from "gatsby-link"
 import throttle from "lodash.throttle"
+import useLayout from "../../utils/hooks/use-layout"
 
 import "slick-carousel/slick/slick.css"
 
@@ -13,13 +14,15 @@ import "./featuredProjects.scss"
 export default function FeaturedProjects({ projects }) {
   const sliderRef = useRef(null)
   const slickRef = useRef(null)
+  const { screenLayout } = useLayout()
+  // const [slidesToUse, setSlidesToUse] = useState(5)
 
   const settings = {
     dots: false,
     infinite: true,
     arrows: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: screenLayout.mobile ? 1 : 3,
     slidesToScroll: 1,
     swipeToSlide: true,
   }
