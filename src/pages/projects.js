@@ -21,18 +21,23 @@ export default ({ data, path }) => {
     return b.fieldValue - a.fieldValue
   })
 
-
-  const validatePosition = position => {
-    if (position <= 0) {
-      return 0
-    } else {
-      return position - 132
+  const validatePosition = (top, bottom) => {
+    let windowHeight = 1000
+    if (window) {
+      windowHeight = window.innerHeight
     }
+    if (top <= 0) {
+      return 0
+    } else if (bottom >= windowHeight - 164) {
+      return windowHeight - 328
+    }
+    return top - 164
   }
 
   const hoverProject = (e, project) => {
     const position = validatePosition(
-      e.currentTarget.getBoundingClientRect().top
+      e.currentTarget.getBoundingClientRect().top,
+      e.currentTarget.getBoundingClientRect().bottom
     )
     setCirclePosition(position)
     setActiveProject(project)
