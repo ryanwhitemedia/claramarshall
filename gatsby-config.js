@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: ".env",
+})
+
 module.exports = {
   siteMetadata: {
     title: `Clara Marshall`,
@@ -17,7 +21,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
-        url: `http://localhost:8888/claramarshall.com/graphql`,
+        url: process.env.API_URL,
       },
     },
     {
