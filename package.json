@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@jam3/react-hooks": "^1.0.0",
+    "@mkitio/gatsby-theme-password-protect": "^2.1.2",
     "classnames": "2.2.6",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",

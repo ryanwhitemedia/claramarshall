@@ -35,6 +35,14 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: "@mkitio/gatsby-theme-password-protect",
+      options: {
+        password: process.env.PROJECTS_PASSWORD, // delete or `undefined` to disable password protection
+        partialMatching: true,
+        pagePaths: ["/project", "/projects"],
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `clara-marshall`,
