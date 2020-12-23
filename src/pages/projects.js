@@ -154,7 +154,7 @@ export const query = graphql`
                 localFile {
                   childImageSharp {
                     gatsbyImageData
-                    fluid {
+                    fluid(maxWidth: 2500, quality: 100) {
                       ...GatsbyImageSharpFluid
                     }
                   }
