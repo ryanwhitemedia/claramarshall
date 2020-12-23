@@ -2,20 +2,38 @@
 
 .Project {
   max-width: px($main-max-width);
-  padding: 0 px($main-padding);
+  padding: 0 px($main-padding) px(100);
   margin: 0 auto;
+
+  @include breakpoint(tablet) {
+    padding-left: px($tablet-padding);
+    padding-right: px($tablet-padding);
+  }
+
+  @include breakpoint(desktopSm) {
+    padding-bottom: px(200);
+  }
 
   .projectLanding {
     margin-bottom: px(50);
-    @include breakpoint(tablet) {
+    @include breakpoint(desktopSm) {
       margin-bottom: px(120);
       display: grid;
       grid-template-columns: 1fr 1fr;
+      column-gap: px(80);
     }
 
     .title {
       color: $orange;
       margin-bottom: px(30);
+    }
+
+    .description {
+      margin-top: px(50);
+
+      @include breakpoint(desktopSm) {
+        margin-top: 0;
+      }
     }
 
     .year,
@@ -27,6 +45,10 @@
       font-weight: 400;
       margin-top: px(10);
       display: block;
+    }
+
+    .link {
+      display: inline-block;
     }
 
     .link .text {
@@ -44,7 +66,45 @@
     @include font-style(p2);
   }
 
+  strong {
+    font-family: $font-bold;
+  }
+
+  .has-small-font-size {
+    @include font-style(h4);
+    text-transform: uppercase;
+    font-family: $font-medium;
+    margin: px(50) 0 px(30);
+
+    @include breakpoint(tablet) {
+      margin: px(80) 0 px(30);
+    }
+  }
+
+  .has-medium-font-size {
+    @include font-style(p);
+  }
+
   /* ==== CUSTOM GUTENBERG BLOCKS ==== */
+
+  //
+  .wp-block-image {
+    margin: 0 px(-$main-padding);
+    display: block;
+
+    @include breakpoint(tablet) {
+      margin: 0;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .gatsby-image-wrapper {
+      overflow: initial !important;
+      width: 100% !important;
+    }
+  }
 
   // Fullscreen Image Block
   .fullscreen-image {
@@ -60,7 +120,7 @@
 
     .fullscreen-image-background {
       width: 100% !important;
-      max-height: px(480) !important;
+      overflow: visible !important;
     }
 
     .fullscreen-image-text {
@@ -104,7 +164,7 @@
 
     @include breakpoint(desktopSm) {
       margin: px(120) 0;
-      grid-template-columns: 60% 40%;
+      grid-template-columns: 50% 50%;
     }
 
     .image-feature-image {
@@ -114,15 +174,24 @@
 
     .image-feature-text-container {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
+
+      @include breakpoint(desktopSm) {
+        padding: 0 px(30);
+      }
     }
   }
 
   // Image Columns Block
+  .image-columns:first-child {
+    margin-top: 0;
+  }
+
   .image-columns {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin: px(50) 0;
 
     @include breakpoint(tablet) {
       flex-direction: row;
@@ -139,6 +208,15 @@
 
       &:last-child {
         margin-right: 0;
+
+        &:nth-child(2),
+        &:nth-child(3) {
+          .image-columns-image {
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
       }
 
       .image-columns-image {
