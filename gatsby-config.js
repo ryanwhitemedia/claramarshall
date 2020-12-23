@@ -38,8 +38,7 @@ module.exports = {
       resolve: "@mkitio/gatsby-theme-password-protect",
       options: {
         password: process.env.PROJECTS_PASSWORD, // delete or `undefined` to disable password protection
-        partialMatching: true,
-        pagePaths: ["/project", "/projects"],
+        pagePaths: ["/projects", "/projects/"],
       },
     },
     {
