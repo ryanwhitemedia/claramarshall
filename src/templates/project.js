@@ -10,7 +10,6 @@ import "../styles/project.scss"
 export default function Post({ pageContext, data, path }) {
   const content = pageContext
 
-
   return (
     <Layout path={path}>
       <div className="Project">
@@ -21,19 +20,25 @@ export default function Post({ pageContext, data, path }) {
               className="year"
               dangerouslySetInnerHTML={{ __html: content.project.projectYear }}
             />
-            <h4
-              className="type"
-              dangerouslySetInnerHTML={{ __html: content.project.projectType }}
-            />
-            <a
-              className="link"
-              href={content.project.link.url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className="text">{content.project.link.text}</span>
-              <Arrow className="arrow" />
-            </a>
+            {content.project.projectType != null && (
+              <h4
+                className="type"
+                dangerouslySetInnerHTML={{
+                  __html: content.project.projectType,
+                }}
+              />
+            )}
+            {content.project.link != null && (
+              <a
+                className="link"
+                href={content.project.link.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="text">{content.project.link.text}</span>
+                <Arrow className="arrow" />
+              </a>
+            )}
           </div>
           <div>
             <p
