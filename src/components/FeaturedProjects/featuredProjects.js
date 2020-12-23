@@ -15,14 +15,17 @@ export default function FeaturedProjects({ projects }) {
   const sliderRef = useRef(null)
   const slickRef = useRef(null)
   const { screenLayout } = useLayout()
-  // const [slidesToUse, setSlidesToUse] = useState(5)
+  let slidesToShow = 3
+  if (screenLayout) {
+    slidesToShow = screenLayout.mobile || screenLayout.tablet ? 1 : 3
+  }
 
   const settings = {
     dots: false,
     infinite: true,
     arrows: false,
     speed: 500,
-    slidesToShow: screenLayout.mobile || screenLayout.tablet ? 1 : 3,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
     swipeToSlide: true,
   }
