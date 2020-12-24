@@ -16,6 +16,7 @@
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sass": "^2.7.0",
     "gatsby-plugin-sharp": "^2.8.0",
+    "gatsby-plugin-smoothscroll": "^1.2.0",
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-source-wordpress-experimental": "^5.0.0",
     "gatsby-transformer-sharp": "^2.6.0",

@@ -35,8 +35,9 @@ export default ({ data, path }) => {
                 target="_blank"
                 rel="noreferrer"
                 href={`mailto:${link}`}
-                dangerouslySetInnerHTML={{ __html: content.title }}
-              />
+              >
+                {content.title}
+              </a>
             </h1>
           </span>
           <ul className="list">
