@@ -76,33 +76,40 @@
     }
 
     .arrow {
+      background: transparent;
+      border: none;
+      cursor: pointer;
       @include animate-in(0.6, 0.3);
       bottom: 0;
       left: 0;
       position: absolute;
       width: px(189);
       overflow: visible;
+      padding: 0;
+
       @include breakpoint(desktopSm) {
         left: auto;
         right: px(640);
         width: px(75);
 
-        path {
-          transition: transform 0.3s;
-          @include ease(in-out-cubic);
-        }
-
         &:hover {
-          path {
+          svg {
             transform: translateY(px(40));
           }
         }
+      }
+
+      svg {
+        overflow: visible;
+        transition: transform 0.3s;
+        @include ease(in-out-cubic);
       }
     }
   }
 
   .threeGrid {
-    margin: px(50) 0;
+    margin: 0;
+    padding: px(50) 0;
     @include breakpoint(desktopSm) {
       margin-left: auto;
       width: px(790);

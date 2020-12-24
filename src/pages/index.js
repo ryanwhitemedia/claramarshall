@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -12,6 +13,7 @@ import "../styles/home.scss"
 export default ({ data, path }) => {
   const content = data.allWpPage.edges[0].node.home
   const heroText = content.heroText.replace("<p>", "").replace("</p>", "")
+
   return (
     <Layout path={path}>
       <SEO title="Home" />
@@ -27,26 +29,30 @@ export default ({ data, path }) => {
               dangerouslySetInnerHTML={{ __html: content.tagline }}
             />
           </span>
-          <CircleArrow className="arrow" />
+          <button className="arrow" onClick={() => scrollTo("#thoughts")}>
+            <CircleArrow />
+          </button>
         </div>
 
-        {content.items.map(item => (
-          <div className="threeGrid" key={item.title}>
-            <div className="itemOne">
-              <h4
-                className="subtitle"
-                dangerouslySetInnerHTML={{ __html: item.title }}
+        <div id="thoughts">
+          {content.items.map(item => (
+            <div className="threeGrid" key={item.title}>
+              <div className="itemOne">
+                <h4
+                  className="subtitle"
+                  dangerouslySetInnerHTML={{ __html: item.title }}
+                />
+              </div>
+              <div
+                className="itemTwo"
+                dangerouslySetInnerHTML={{ __html: item.content }}
               />
+              <div className="itemThree">
+                <Squiggle className="squiggle" />
+              </div>
             </div>
-            <div
-              className="itemTwo"
-              dangerouslySetInnerHTML={{ __html: item.content }}
-            />
-            <div className="itemThree">
-              <Squiggle className="squiggle" />
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </Layout>
   )

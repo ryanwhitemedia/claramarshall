@@ -6,12 +6,18 @@ import Arrow from "../svgs/arrow.svg"
 import FeaturedProjects from "../components/FeaturedProjects/featuredProjects"
 
 import "../styles/project.scss"
+import SEO from "../components/seo"
 
 export default function Post({ pageContext, data, path }) {
   const content = pageContext
+  let metaDesc = content.project.description
+  if (metaDesc.length >= 150) {
+    metaDesc = content.project.description.substring(0, 148) + "..."
+  }
 
   return (
     <Layout path={path}>
+      <SEO title={`Project - ${content.title}`} description={metaDesc} />
       <div className="Project">
         <div className="projectLanding">
           <div>
