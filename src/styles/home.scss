@@ -82,6 +82,7 @@
       position: absolute;
       width: px(189);
       overflow: visible;
+
       @include breakpoint(desktopSm) {
         left: auto;
         right: px(640);
