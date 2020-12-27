@@ -22,6 +22,10 @@ module.exports = {
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
         url: process.env.API_URL,
+        schema: {
+          timeout: 60000,
+          perPage: 300,
+        },
       },
     },
     {

@@ -9,3 +9,4 @@
 **This Site was built with <a href="https://www.gatsbyjs.com/">Gatsby</a>**
 
 
+This site uses Wordpress as a headless CMS and renders the content using gatsby.
