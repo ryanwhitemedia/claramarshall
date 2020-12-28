@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import classnames from "classnames"
+import { navigate } from "gatsby"
+
 import { setSessionPassword } from "@mkitio/gatsby-theme-password-protect/src/utils/utils"
 import CircleArrow from "../../../svgs/circle-arrow.svg"
 
@@ -15,6 +17,7 @@ const PasswordProtect = () => {
       event.preventDefault()
     }
     setSessionPassword(password)
+    navigate("/projects")
     window.location.reload() // eslint-disable-line
   }
 

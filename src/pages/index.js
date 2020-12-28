@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import { graphql } from "gatsby"
 import scrollTo from "gatsby-plugin-smoothscroll"
 
@@ -13,13 +13,20 @@ import "../styles/home.scss"
 export default ({ data, path }) => {
   const content = data.allWpPage.edges[0].node.home
   const heroText = content.heroText.replace("<p>", "").replace("</p>", "")
-
+  let linkText = useRef({ current: null })
+  useEffect(() => {
+    linkText.current = document.querySelector("#title strong")
+    if (linkText.current) {
+      linkText.current.addEventListener("click", () => scrollTo("#thoughts"))
+    }
+  }, [linkText])
   return (
     <Layout path={path}>
       <SEO title="Home" />
       <div className="Home">
         <div className="landingContainer">
           <h1
+            id="title"
             className="title"
             dangerouslySetInnerHTML={{ __html: heroText }}
           />

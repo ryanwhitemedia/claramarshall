@@ -3,16 +3,17 @@
 .Projects {
   position: relative;
   .projectsInner {
+    @include animate-in-up(0.6);
     padding: px(20) px($main-padding);
     min-height: calc(100vh - #{px(410)});
-    @include animate-in-up(0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
 
     @include breakpoint(desktopSm) {
+      padding-bottom: px(100);
       min-height: calc(100vh - #{px(390)});
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
     }
 
     .projectGroup {

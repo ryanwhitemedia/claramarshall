@@ -64,6 +64,10 @@
 
   p {
     @include font-style(p2);
+
+    &:not(.has-medium-font-size):not(.has-small-font-size) {
+      padding-bottom: 50px;
+    }
   }
 
   strong {
