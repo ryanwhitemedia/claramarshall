@@ -19,10 +19,16 @@ export default ({ data, path }) => {
   const [circlePosition, setCirclePosition] = useState(null)
   const [listActive, setListActive] = useState(true)
   const { screenLayout } = useLayout()
-  const groups = data.allWpProject.group
-  groups.sort(function (a, b) {
-    return b.fieldValue - a.fieldValue
-  })
+  const projects = data.allWpProject.edges
+  let projectGroups = {}
+  for (let i = 0; i < projects.length; i++) {
+    const year = projects[i].node.date.slice(0, 4)
+    if (projectGroups[year]) {
+      projectGroups[year].push(projects[i])
+    } else {
+      projectGroups[year] = [projects[i]]
+    }
+  }
 
   const validatePosition = (top, bottom) => {
     let windowHeight = 1000
@@ -94,14 +100,17 @@ export default ({ data, path }) => {
           )}
         </div>
         <div className="projectsInner">
-          {groups.map(group => {
+          {Object.entries(projectGroups).map(([year, group]) => {
             return (
-              <div key={group.fieldValue} className="projectGroup">
-                <h3 className="groupTitle">{group.fieldValue}</h3>
+              <div key={year} className="projectGroup">
+                <h3
+                  className="groupTitle"
+                  dangerouslySetInnerHTML={{ __html: year }}
+                ></h3>
                 <ul
                   className={classnames("list", !listActive && "listInactive")}
                 >
-                  {group.edges.map(project => (
+                  {group.map(project => (
                     <li key={project.node.title} className="listItem">
                       <Link
                         className="link"
@@ -139,24 +148,19 @@ export default ({ data, path }) => {
 
 export const query = graphql`
   query {
-    allWpProject {
-      group(field: project___projectYear) {
-        fieldValue
-        edges {
-          node {
-            title
-            slug
-            project {
-              projectYear
-            }
-            featuredImage {
-              node {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                    fluid(maxWidth: 2000, quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    }
+    allWpProject(sort: { fields: date, order: DESC }) {
+      edges {
+        node {
+          date
+          title
+          slug
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                  fluid(maxWidth: 2000, quality: 100) {
+                    ...GatsbyImageSharpFluid
                   }
                 }
               }

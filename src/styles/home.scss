@@ -26,6 +26,7 @@
     .title {
       @include animate-in-up(0.6);
       strong {
+        cursor: pointer;
         color: $orange;
         position: relative;
         font-weight: 400;
@@ -46,6 +47,20 @@
       @include breakpoint(desktopSm) {
         max-width: px(720);
         margin-left: auto;
+
+        strong {
+          &:hover {
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+
+        strong::after {
+          width: 0px;
+          transition: width 0.3s;
+          @include ease(in-out-cubic);
+        }
       }
     }
 
