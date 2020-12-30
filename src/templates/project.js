@@ -24,7 +24,7 @@ export default function Post({ pageContext, data, path }) {
             <h1 className="title">{content.title}</h1>
             <h4
               className="year"
-              dangerouslySetInnerHTML={{ __html: content.project.projectYear }}
+              dangerouslySetInnerHTML={{ __html: content.data.slice(0, 4) }}
             />
             {content.project.projectType != null && (
               <h4
