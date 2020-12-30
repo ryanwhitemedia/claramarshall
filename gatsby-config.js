@@ -26,12 +26,6 @@ module.exports = {
           timeout: 60000,
           perPage: 300,
         },
-        verbose: true,
-        debug: {
-          graphql: {
-            showQueryVarsOnError: true,
-          },
-        },
       },
     },
     {
