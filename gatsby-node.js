@@ -14,11 +14,11 @@ exports.createPages = ({ graphql, actions }) => {
         nodes {
           title
           content
+          date
           slug
           project {
             description
             projectType
-            projectYear
             link {
               url
               text
