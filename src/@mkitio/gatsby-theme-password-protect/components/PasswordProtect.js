@@ -1,11 +1,12 @@
 import React, { useState } from "react"
 import classnames from "classnames"
-import { navigate } from "gatsby"
 
 import { setSessionPassword } from "@mkitio/gatsby-theme-password-protect/src/utils/utils"
 import CircleArrow from "../../../svgs/circle-arrow.svg"
 
 import "./passwordPage.scss"
+import "../../../styles/projects.scss"
+
 import Layout from "../../../components/layout"
 
 const PasswordProtect = () => {
@@ -17,7 +18,6 @@ const PasswordProtect = () => {
       event.preventDefault()
     }
     setSessionPassword(password)
-    navigate("/projects")
     window.location.reload() // eslint-disable-line
   }
 
@@ -29,7 +29,7 @@ const PasswordProtect = () => {
 
   return (
     <Layout hideFooter={true}>
-      <div className="PasswordPage">
+      <div className="PasswordPage Projects">
         <h2 className="title">Thank you for your interest</h2>
         <p className="text">
           Unfortunatley some projects are client sensitive, to view my public
