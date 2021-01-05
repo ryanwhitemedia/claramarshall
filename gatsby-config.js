@@ -32,7 +32,7 @@ module.exports = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /svgs/, // See below to configure properly
+          include: /svgs/,
         },
       },
     },
@@ -42,7 +42,7 @@ module.exports = {
     {
       resolve: "@mkitio/gatsby-theme-password-protect",
       options: {
-        password: process.env.PROJECTS_PASSWORD, // delete or `undefined` to disable password protection
+        password: process.env.PROJECTS_PASSWORD,
         pagePaths: ["/projects", "/projects/"],
       },
     },
