@@ -83,10 +83,12 @@ const Header = ({ path }) => {
               <span className="activeDot" />
             </Link>
             <span role="presentation" className="circle" />
+
             <span
               role="presentation"
               className={classnames("circle circleDesktop", {
                 hideCircle: hideCircle,
+                showCircle: !hideCircle,
               })}
               style={style}
             />
