@@ -69,7 +69,10 @@ export default ({ data, path }) => {
 
   return (
     <Layout hideFooter={true} path={path}>
-      <SEO title="Projects" />
+      <SEO
+        title="Projects"
+        description="A collection of projects designed by Clara Marshall."
+      />
       <div className="Projects">
         <div
           className={classnames("circle", itemHovered && "circleActive")}

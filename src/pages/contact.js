@@ -25,7 +25,10 @@ export default ({ data, path }) => {
   }
   return (
     <Layout path={path}>
-      <SEO title="Contact" />
+      <SEO
+        title="Contact"
+        description="Contact information and social links for Clara Marshall."
+      />
       <div className="Contact">
         <div>
           <span className="titleWrapper">
