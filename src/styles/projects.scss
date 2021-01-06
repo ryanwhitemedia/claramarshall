@@ -103,6 +103,7 @@
 
     .link {
       display: none;
+      font-family: $heading-font;
 
       @include breakpoint(desktopSm) {
         padding: px(10) px(30);
@@ -120,6 +121,7 @@
 
         .title {
           @include font-style(projectsCircle);
+          font-family: $heading-font;
           text-align: center;
         }
 
