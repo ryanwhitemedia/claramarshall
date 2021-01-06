@@ -22,7 +22,10 @@ export default ({ data, path }) => {
   }, [linkText])
   return (
     <Layout path={path}>
-      <SEO title="Home" />
+      <SEO
+        title="Home"
+        description="Based in Toronto, Clara is a creative soul who believes anything can be made beautiful and that a perfect balance of function and beauty leads to a happy life."
+      />
       <div className="Home">
         <div className="landingContainer">
           <h1
