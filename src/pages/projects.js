@@ -17,7 +17,7 @@ export default ({ data, path }) => {
   const [itemHovered, setItemHovered] = useState(false)
   const [activeProject, setActiveProject] = useState(null)
   const [circlePosition, setCirclePosition] = useState(null)
-  const [listActive, setListActive] = useState(true)
+  const [linkInactive, setLinkInactive] = useState(false)
   const { screenLayout } = useLayout()
   const projects = data.allWpProject.edges
   let projectGroups = {}
@@ -44,7 +44,7 @@ export default ({ data, path }) => {
   }
 
   const hoverProject = (e, project) => {
-    if (!screenLayout.mobile && !screenLayout.tablet) {
+    if (!linkInactive) {
       const position = validatePosition(
         e.currentTarget.getBoundingClientRect().top,
         e.currentTarget.getBoundingClientRect().bottom
@@ -52,7 +52,7 @@ export default ({ data, path }) => {
       setCirclePosition(position)
       setActiveProject(project)
       setItemHovered(true)
-      setListActive(false)
+      setLinkInactive(true)
     }
   }
 
@@ -62,9 +62,8 @@ export default ({ data, path }) => {
       setItemHovered(false)
 
       setTimeout(() => {
-        setListActive(true)
-        setActiveProject(null)
-      }, 750)
+        setLinkInactive(false)
+      }, 450)
     }
   }
 
@@ -81,14 +80,14 @@ export default ({ data, path }) => {
                 : null,
           }}
           ref={circleRef}
-          onMouseLeave={() => {
-            hoverOffProject()
-          }}
           role="button"
           tabIndex={itemHovered ? "0" : "-1"}
         >
-          {activeProject !== null && itemHovered && (
-            <Link to={`/project/${activeProject.node.slug}`} className="link">
+          {activeProject !== null && (
+            <Link
+              to={`/project/${activeProject.node.slug}`}
+              className={classnames("link", itemHovered && "showText")}
+            >
               <span>
                 <h2 className="title">{activeProject.node.title}</h2>
                 <span className="arrowContainer">
@@ -106,16 +105,23 @@ export default ({ data, path }) => {
                 <h3
                   className="groupTitle"
                   dangerouslySetInnerHTML={{ __html: year }}
-                ></h3>
-                <ul
-                  className={classnames("list", !listActive && "listInactive")}
-                >
+                />
+                <ul className="list">
                   {group.map(project => (
                     <li key={project.node.title} className="listItem">
                       <Link
-                        className="link"
-                        to={`/project/${project.node.slug}`}
                         onMouseEnter={e => hoverProject(e, project)}
+                        onMouseLeave={() => {
+                          hoverOffProject()
+                        }}
+                        className={classnames(
+                          "link",
+                          activeProject !== null &&
+                            linkInactive &&
+                            project !== activeProject &&
+                            "inactiveLink"
+                        )}
+                        to={`/project/${project.node.slug}`}
                       >
                         {project.node.title}
                       </Link>
@@ -125,21 +131,23 @@ export default ({ data, path }) => {
               </div>
             )
           })}
-        </div>
-        <div className={classnames("overlay", itemHovered && "overlayActive")}>
-          {activeProject !== null && (
-            <>
-              {activeProject.node.featuredImage !== null && (
-                <Img
-                  className="bgImage"
-                  fluid={
-                    activeProject.node.featuredImage.node.localFile
-                      .childImageSharp.fluid
-                  }
-                />
-              )}
-            </>
-          )}
+          <div
+            className={classnames("overlay", itemHovered && "overlayActive")}
+          >
+            {activeProject !== null && (
+              <>
+                {activeProject.node.featuredImage !== null && (
+                  <Img
+                    className="bgImage"
+                    fluid={
+                      activeProject.node.featuredImage.node.localFile
+                        .childImageSharp.fluid
+                    }
+                  />
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </Layout>
