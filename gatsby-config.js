@@ -23,8 +23,9 @@ module.exports = {
       options: {
         url: process.env.API_URL,
         schema: {
-          timeout: 60000,
+          timeout: 160000,
           perPage: 300,
+          requestConcurrency: 50,
         },
       },
     },
