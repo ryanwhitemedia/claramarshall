@@ -7,6 +7,7 @@ module.exports = {
     title: `Clara Marshall`,
     description: `Design portfolio.`,
     author: `@ryanwhitemedia`,
+    siteUrl: `https://www.claramarshall.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
