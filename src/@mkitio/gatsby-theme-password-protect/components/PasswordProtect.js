@@ -32,15 +32,14 @@ const PasswordProtect = () => {
       <div className="PasswordPage Projects">
         <h2 className="title">Thank you for your interest</h2>
         <p className="text">
-          Unfortunatley some projects are client sensitive, to view my public
-          work please visit{" "}
+        Unfortunately some projects are client sensitive, to view my public work please visit{" "}
           <a
             className="link"
-            href="https://www.behance.net/claramarshall"
+            href="https://www.instagram.com/claracmarshall/"
             target="_blank"
             rel="noreferrer"
           >
-            my behance page.
+            my instagram page.
           </a>
         </p>
 
